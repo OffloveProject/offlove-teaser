@@ -12,4 +12,12 @@
   max-width: 500px;
 }
 
+/* 内容は変更される可能性があります */
+.sub-note {
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  margin-top: 4px;
+}
+
 
