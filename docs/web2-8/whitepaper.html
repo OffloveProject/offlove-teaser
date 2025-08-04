@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ホワイトペーパー</title>
+<style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      font-size: 2rem;
+      color: white;
+      background-color: #111;
+      padding: 0.5rem 1rem;
+      z-index: 1001;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    nav {
+      width: 250px;
+      background-color: #111;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
+      padding-top: 5rem; /* ←ここを1remから4remに変更して、ハンバーガーアイコンとの被りを防ぐ */
+      transition: transform 0.3s ease;
+      transform: translateX(0);
+      z-index: 1000;
+    }
+
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      padding: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+
+    nav a.active {
+      background-color: #444;
+      border-left: 5px solid #f0c;
+      padding-left: 0.5rem;
+    }
+
+    .content {
+      margin-left: 250px;
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        transform: translateX(-100%);
+      }
+
+      nav.open {
+        transform: translateX(0);
+      }
+
+      .content {
+        margin-left: 0;
+        padding-top: 4rem;
+      }
+    }
+    
+        /* メニューリストのスタイル修正 */
+    .sidebar ul li a {
+      display: block;
+      padding: 1rem 1.5rem; /* ←縦方向に余白追加 */
+      text-decoration: none;
+      color: #fff;
+      transition: background 0.3s;
+    }
+
+    /* ハンバーガーアイコンとの間隔を確保 */
+    .sidebar {
+      padding-top: 3rem; /* ←上に余白を追加して被りを防ぐ */
+    }
+
+    /* ハンバーガーアイコンとメニューの重なり防止のための保険 */
+    .hamburger {
+      z-index: 1002;
+    }
+
+    /* サイドバー上部にタイトル挿入 */
+    .sidebar-title {
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /*サイドバー下部に公式サイトTOPへのリンク挿入*/
+    .sidebar-footer {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .home-button {
+      display: inline-block;
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
+    }
+
+    .home-button:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+
+  </style>
+</head>
+<body>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+<nav id="sidebar">
+  <div class="sidebar-title">
+  Offstage Love Project<br>Web2.8 ホワイトペーパー
+</div>
+<ul>
+<li><a href="#section1">1. はじめに</a></li>
+<li><a href="#section2">2. プロジェクト概要</a></li>
+<li><a href="#section3">3. ゲーム設計</a></li>
+<li><a href="#section4">4. Web2.8要素とNFT導入方針</a></li>
+<li><a href="#section5">5. NFT未購入者への配慮</a></li>
+<li><a href="#section6">6. 今後のロードマップ</a></li>
+<li><a href="#section7">7. お問い合わせ先</a></li>
+</ul>
+  <div class="sidebar-footer">
+    <a href="../index.html" class="home-button">オフラブ公式サイトTOP</a>
+  </div>
+
+</nav>
+<div class="content">
+  <section id="section1">
+    <h2>🎤 はじめに</h2>
+      <p>Offstage Love Project - Web2.8 ホワイトペーパー</p>
+      <p>『Offstage Love（オフステージ・ラブ）〜秘密の恋と夢のはざまで〜』は、恋愛×芸能界を舞台にした女性向けマルチエンディング恋愛シミュレーションゲームです。</p>
+      <p>本プロジェクトは、個人クリエイターによる自主制作プロジェクトとして始動し、</p>
+      <p>従来のゲームジャンルに留まらない「プレイヤーの感情と物語の共鳴」をコンセプトに展開されます。</p>
+  </section>
+  <section id="section2">
+    <h2>💡 プロジェクト概要</h2>
+      <p>タイトル：Offstage Love（オフステージ・ラブ）</p>
+      <p>プラットフォーム：モバイルアプリ（iOS / Android予定）</p>
+      <p>開発体制：個人クリエイター主導</p>
+      <p>公開形式：</p>
+      <p>本編：一括買切型（価格未定）</p>
+      <p>アフターストーリーおよび番外編：エピソード毎に追加DLC（価格未定）</p>
+      <p>予定リリース：2028年予定</p><p>所属ブランド：Offstage Love Project</p>
+  </section>
+  <section id="section3">
+    <h2>🎮 ゲーム設計</h2>
+    <p>■ ストーリー</p>
+      <p>夢を追う新人シンガーである「あなた」が、人気絶頂の男性アイドルグループ「CELEST（セレスと）」のメンバーたちと出会い、恋と成長、葛藤と選択を重ねていく物語。</p>
+      <p></p>
+      <p>■ 主な特徴</p>
+      <p>・全編共通ルート×マルチエンディング：物語の途中で分岐せず、エンディングに向けてプレイヤーの“感情の積み重ね”によって未来が決まる設計。</p>
+      <p>・主人公＝プレイヤー：固定人格ではなく、プレイヤーの選択で自然に物語が形作られる。</p>
+      <p>・XPシステム導入：レベルアップによって仕事（職業）の選択肢が広がり、キャラ別イベントにも変化が出る。</p>
+      <p>・解放型楽曲システム：ゲームの進行状況に応じて、新しい楽曲が順次開放される音楽的体験設計。</p>
+  </section>
+  <section id="section4">
+    <h2>🔗 Web2.8要素とNFT導入方針</h2>
+      <p>■「技術的パイオニア」ではなく「体験的パイオニア」としての位置づけ</p>
+      <p>オフラブは、“Web3技術ありきで設計された乙女ゲー”ではなく、“Web2物語を最後まで届けるためにブロックチェーンを選んだゲーム”です。</p>
+      <p>「世界初の“感情永続型”乙女ゲーム」として、「世界にひとつだけの体験を記録するためのWeb3技術」を活用します。</p>
+      <p>この設計思想こそ、今のWeb3疲れ時代に唯一刺さる“感情のパイオニア”になる最大の武器と確信しています。</p>
+      <p></p>
+      <p>■ Web2.8とは？</p>
+      <p>当プロジェクトにおける「Web2.8」とは、Web2（通常アプリユーザー）とWeb3（ブロックチェーンユーザー）の中間に位置するコンセプトです。</p>
+      <p>特別な知識やスキルがなくても、NFTやブロックチェーンの要素に触れられる「やさしいWeb3体験」を目指しています。</p>
+      <p>■Web2.5との違い</p><p>当プロジェクトにおける「Web2.8」とは、「Web3.0技術を必要最小限に活用する」という、先進的なWeb2.5設計です。</p>
+      <p>「譲渡不可NFT×UX重視」で“ユーザーに寄り添う感情設計”の実現を目的とし、Web3の恩恵だけをピンポイントで取り込んでいるのが最大の強みです。</p>
+      <p>Web2.8は、推しとの思い出を“資産化”するのではなく、“記録”するためにある。それが、乙女ゲーとブロックチェーンが“奇跡的に重なる場所”です。</p>
+      <p>「乙女ゲー × ブロックチェーン」領域は、ほぼ未開拓であり、日本発・本格ストーリー型の乙女ゲーでNFTを感情的に扱っている事例はゼロに近いでしょう。</p>
+      <p>実在するWeb3乙女ゲーはわずか数件（しかもα〜β段階や仮想彼氏系が中心）です。さらに、現状の多くは「Web3だからNFT」「メタバースで恋人作れる」的なギミック先行型の作品となっているのに対して、当プロジェクトは逆方向のアプローチで設計しています。</p>
+      <p>ストーリーと感情を主軸に置いたうえで、NFTが“必要なところにだけ”ある。この“温度感”のバランスが、現代のユーザー心理にフィットしています。</p>
+      <p>完全Web3ではないからこそ多くのプレイヤーが抵抗感なく入れる一方で、「Web3ってこういうことだったのか」と思わせるくらいの感情的な体験を提供します。</p>
+      <p style="font-size: 0.9em;">※「web2.8」は、本プロジェクト独自の表現であり、一般的な金融・技術用語ではありません。</p>
+      <p>■ 「譲渡不可NFT × 楽曲 × 想い出記録」という独自コンセプト</p>
+      <p>一般的なWeb3プロジェクトにおけるNFTは、「売る/買う/投資する」対象として扱われています。</p>
+      <p>当プロジェクトにおいても一部ではそのようなNFTを扱いますが、当プロジェクトがもっとも重きを置くのが、「想い出の記録」として配布する譲渡不可の記念NFTです。</p>
+      <p>オフラブは「売買可能ではないNFTに“愛と意味”を持たせた商用乙女ゲー」であり、「エンディング報酬が音源NFTとして永続化される」という点において、市場内の唯一無二の存在を目指しています。</p>
+      <p>■3層構造のNFT設計</p>
+      <p>当プロジェクトでは、大まかに以下の3種類を取り扱います。</p>
+      <p>(1)譲渡可NFT(有料販売)→目的:web3ユーザー&amp;海外ユーザーへのアプローチ、ロイヤリティ収入確保</p>
+      <p>(2)譲渡不可NFT(無料配布)→ストーリークリア記念、各種SNSイベントへの参加特典など。目的:思い出の永久保存用として希望者にのみ配布</p>
+      <p>(3)譲渡不可NFT(無料配布)→楽曲NFT。目的:アプリ内での楽曲ストリーミング再生サポート終了後の代替手段。</p>
+      <p></p>
+      <p>一般的なWeb3ゲームで流通する(1)型のNFTのほか、オフラブでは(2)や(3)といった独自のコンセプトに基づくNFTを配布予定です。(2)や(3)は、世界にひとつだけのユーザーの恋物語を記録するためのものですので、譲渡することができません。</p>
+      <p>また、維持コストが発生しないArweaveでの保存を想定しているため、仮に弊社側が破産・倒産した場合でもNFTメタデータが消える心配はありません。</p>
+      <p>ユーザーは、正真正銘、永続的に「自分だけの記録」を保存しておくことができます。</p>
+      <p></p>
+      <p></p>
+      <p>■ NFT活用の目的</p>
+      <p>・ゲームの進行とは完全に無関係（Pay to Win ではありません）</p>
+      <p>・恋愛の記録を永遠に保存するロマンチックな証明</p>
+      <p>・プレイヤーが自分の体験を“所有”する文化体験の創出</p>
+      <p></p>
+      <p>■ NFTの仕様（予定）</p>
+      <p>・配布形式：無料配布（一部有料NFTあり）</p>
+      <p>・発行条件：一部エンディング到達時、自動開放もしくは請求方式</p>
+      <p>・チェーン：Polygon / Ethereum</p>
+      <p>・所有確認：OpenSea連携によるアプリ内表示（ウォレット接続必要）</p>
+      <p>・NFTの例：「トゥルーエンド記念NFT」「楽曲アンロック記念NFT」など</p>
+      <p>・実装時期：アプリ正式リリース後、順次実装</p>
+  </section>
+  <section id="section5">
+    <h2>🛡️ NFT未購入者への配慮</h2>
+      <p>・ゲームはNFT無しでも100%フル体験可能</p>
+      <p>・NFTの購入は感情的価値／記念性のあるオプションです。</p>
+      <p>・有料NFTを購入してもゲームの進行や結末には影響しません。</p>
+      <p>・有料NFTを購入してもゲームの進行に有利になることはありません。</p>
+      <p>・未成年ユーザーや仮想通貨未経験者にも配慮し、丁寧な導線とガイドページを用意予定です</p>
+  </section>
+  <section id="section6">
+    <h2>🗺 今後のロードマップ（簡易版）</h2>
+      <p>・2025年夏：ティザーサイト公開 / 公式X運用開始</p>
+      <p>・2025年秋〜冬：開発本格化 / プロモーション展開開始</p>
+      <p>・2027年後半：ゲーム体験版公開予定（非公開テスト）</p>
+      <p>・2028年前半：メインゲームリリース予定</p>
+      <p>・2028年後半～：DLC / アフターストーリー展開・NFT配布開始・グッズ販売ほか</p>
+  </section>
+  <section id="section7">
+    <h2>✉️ お問い合わせ先</h2>
+      <p>Offstage Love Project（オフラブプロジェクト）</p>
+      <p>公式お問い合わせ窓口</p>
+      <p>Email：offlove.project@gmail.com</p>
+      <p>URL：https://offlove.com</p>
+      <p>※本プロジェクトは個人による自主制作企画です。</p>
+  </section>
+</div>
+<script>
+  function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("open");
+  }
+
+  // スマホでクリック時にメニュー閉じる
+  document.querySelectorAll('#sidebar a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        document.getElementById("sidebar").classList.remove("open");
+      }
+    });
+  });
+
+  // スクロールで現在地ハイライト
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("#sidebar a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= sectionTop - 100) {
+        current = section.id;
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+/* 上部固定のバナー */
+.notice-banner {
+
+  margin: auto;
+  padding: 0.5rem;
+
+  background-color: #f28cb2; /* ピンク系乙女カラー */
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  top: 0;
+  max-width: 500px;
+}
+

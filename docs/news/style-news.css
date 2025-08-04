@@ -1,0 +1,48 @@
+/* ↓↓↓NEWS各記事の書式設定 */
+
+/*各記事のスタイル設定*/
+
+.article-container {
+  max-width: 760px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  line-height: 1.9;
+  text-align: left;
+}
+
+.article-container h1 {
+  border-left: 5px solid #F09199;
+  padding-left: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 2rem;
+}
+
+.article-container p {
+  margin-bottom: 1.5rem;
+}
+
+/* 画像挿入 */
+
+.article-container img {
+  max-width: 500px;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* NEWS一覧へ戻る */
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin: 3rem 0 1rem;
+  font-size: 0.95rem;
+}
+
+
+
+/* ↑↑↑NEWS各記事の書式設定 */
