@@ -349,6 +349,14 @@ footer {
   margin: 1rem auto;
 }
 
+.x-wrapper a {
+  color:#FFF;
+}
+
+.x-wrapper a:hover {
+  color:#F09199;
+}
+
 
 /* SNSシェアボタン */
 
