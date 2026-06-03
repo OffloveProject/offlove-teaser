@@ -12,6 +12,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/venue.css">
 </head>
 <body>
 <div class="site-shell">
@@ -31,46 +32,59 @@
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <span class="kicker">Opening soon</span>
-        <img class="hero-logo" src="/assets/img/offstage_love_logo.png" alt="Offstage Love">
-        <h1 class="catchcopy" id="hero-title">音で、恋する。</h1>
-        <p class="hero-lead">芸能界で出会う、仕事と恋と音楽の物語。開演前の会場を歩くように、公開中の情報を少しずつのぞいてください。</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="/game/">ゲーム版を見る</a>
-          <a class="btn" href="/characters/">キャラクターを見る</a>
-        </div>
-      </div>
+    <section class="hero-intro" aria-labelledby="hero-title">
+      <span class="kicker">Opening soon</span>
+      <img class="hero-logo" src="/assets/img/offstage_love_logo.png" alt="Offstage Love">
+      <h1 class="catchcopy" id="hero-title">音で、恋する。</h1>
+      <p class="hero-lead">芸能界で出会う、仕事と恋と音楽の物語。</p>
+    </section>
 
-      <div class="hero-panel" aria-label="開演前の会場UI">
-        <div class="stage-sign">
-          <span class="small">Main Stage</span>
-          <span class="large">PREPARING FOR OPENING</span>
+    <section class="venue-section" aria-labelledby="venue-heading">
+      <div class="venue-heading">
+        <p class="venue-heading-line">━━━━━━━━━━━━━━━━━━━━</p>
+        <h2 id="venue-heading">開演前の会場</h2>
+        <p class="venue-heading-line">━━━━━━━━━━━━━━━━━━━━</p>
+      </div>
+      <div class="venue-stage" aria-label="開演前の会場UI">
+        <div class="venue-stage-sign">
+          <span class="venue-stage-main">MAIN STAGE</span>
+          <span class="venue-stage-sub">PREPARING FOR OPENING</span>
         </div>
-        <button class="npc-dot npc-fan" type="button" data-npc="fan" aria-label="来場者に話しかける"></button>
-        <button class="npc-dot npc-staff" type="button" data-npc="staff" aria-label="会場スタッフに話しかける"></button>
-        <button class="npc-dot npc-industry" type="button" data-npc="industry" aria-label="業界関係者に話しかける"></button>
-        <div class="dialogue-pop" data-dialogue>
-          <span class="dialogue-name" data-dialogue-name></span>
-          <p class="dialogue-text" data-dialogue-text></p>
+
+        <div class="venue-booths" aria-label="ブースメニュー">
+          <button class="venue-booth" type="button" data-booth="about" aria-label="ABOUTブースを開く"><b>ABOUT</b><span>作品概要</span></button>
+          <button class="venue-booth" type="button" data-booth="game" aria-label="GAMEブースを開く"><b>GAME</b><span>ゲーム版</span></button>
+          <button class="venue-booth" type="button" data-booth="characters" aria-label="CHARACTERSブースを開く"><b>CHARACTERS</b><span>人物紹介</span></button>
+          <button class="venue-booth" type="button" data-booth="music" aria-label="MUSICブースを開く"><b>MUSIC</b><span>楽曲展開</span></button>
+          <button class="venue-booth" type="button" data-booth="novel" aria-label="NOVELブースを開く"><b>NOVEL</b><span>ノベル版</span></button>
+          <button class="venue-booth" type="button" data-booth="news" aria-label="NEWSブースを開く"><b>NEWS</b><span>お知らせ</span></button>
         </div>
-        <div class="booth-map" aria-label="ブースメニュー">
-          <button class="booth" type="button" data-booth="about"><b>ABOUT</b><span>作品概要</span></button>
-          <button class="booth" type="button" data-booth="game"><b>GAME</b><span>ゲーム版</span></button>
-          <button class="booth" type="button" data-booth="characters"><b>CHARACTERS</b><span>人物紹介</span></button>
-          <button class="booth" type="button" data-booth="music"><b>MUSIC</b><span>楽曲展開</span></button>
-          <button class="booth" type="button" data-booth="novel"><b>NOVEL</b><span>ノベル版</span></button>
-          <button class="booth" type="button" data-booth="news"><b>NEWS</b><span>お知らせ</span></button>
+
+        <div class="venue-npcs" aria-label="NPC">
+          <button class="venue-npc" type="button" data-npc="fan" aria-label="ファンに話しかける"><span>Fan</span><b>ファン</b></button>
+          <button class="venue-npc" type="button" data-npc="staff" aria-label="スタッフに話しかける"><span>Staff</span><b>スタッフ</b></button>
+          <button class="venue-npc" type="button" data-npc="industry" aria-label="関係者に話しかける"><span>Industry Guest</span><b>関係者</b></button>
         </div>
       </div>
+    </section>
+
+    <section class="venue-dialogue" data-adv-box aria-live="polite" aria-label="会話ボックス" hidden>
+      <p class="venue-dialogue-name" data-adv-name></p>
+      <p class="venue-dialogue-text" data-adv-text></p>
+    </section>
+
+    <section class="venue-info-panel" data-booth-panel aria-live="polite" aria-label="ブース情報" hidden>
+      <p class="venue-info-label" data-booth-label></p>
+      <h3 class="venue-info-title" data-booth-title></h3>
+      <p class="venue-info-body" data-booth-body></p>
+      <a class="btn" data-booth-link href="#">詳細を見る</a>
     </section>
 
     <section class="section" id="about">
       <div class="section-head">
         <span class="section-label">ABOUT</span>
         <h2>ステージの外で始まる、もうひとつの物語。</h2>
-        <p class="lead">『Offstage Love』は、芸能界に飛び込んだあなたが、トップアイドルグループ・ラグティアとの仕事と出会いを通じて、夢と恋の三年間を歩む女性向けキャラクターIP型ライフシミュレーションです。</p>
+        <p class="lead">『Offstage Love』は、芸能界で出会う、仕事と恋と音楽の物語。仕事と恋愛を同じ時間で積み上げる体験を目指しています。</p>
       </div>
       <div class="grid">
         <article class="card">
@@ -80,8 +94,8 @@
         </article>
         <article class="card">
           <span class="meta">Common Route</span>
-          <h3>誰と恋に落ちても正解。</h3>
-          <p>本編は共通ルート制。最初から一人に固定せず、三年間の積み重ねの先で向き合う相手を選びます。</p>
+          <h3>三年間をどう積み上げるか。</h3>
+          <p>プレイヤーは新人アーティストとして、日々の選択を重ねながら未来を作っていきます。</p>
         </article>
         <article class="card">
           <span class="meta">Music Memory</span>
@@ -91,67 +105,78 @@
       </div>
     </section>
 
-    <section class="section" id="characters-preview">
+    <section class="section" id="game">
+      <div class="section-head">
+        <span class="section-label">GAME</span>
+        <h2>あなたが主人公になるゲーム版。</h2>
+        <p class="lead">ゲーム版では主人公名を固定せず、プレイヤー自身が新人アーティストとして芸能界での三年間を歩みます。</p>
+        <div class="section-actions"><a class="btn btn-primary" href="/game/">ゲーム版へ</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="characters">
       <div class="section-head">
         <span class="section-label">CHARACTERS</span>
-        <h2>LAGRANTIA APSIS / ラグティア</h2>
-        <p class="lead">五つの才能が均衡する男性アイドルグループ。芸能界に入ったあなたは、彼らの背中を追いかけ、彼らと共に成長していきます。</p>
-        <p class="lead" hidden>初期ティザーでは、名前・役割・シルエットを中心に公開します。</p>
+        <h2>ラグティア初期5名を公開中。</h2>
+        <p class="lead">初期公開では、神谷陽翔・水無月煌・天羽涼弥・氷堂怜・九条司を紹介します。</p>
       </div>
       <div class="grid grid-5">
         <article class="card character-card">
           <div class="character-visual character-visual-autograph" data-char="haruto"><img src="/assets/img/autograph/01_haruto.png" alt="神谷 陽翔 サイン"></div>
-          <div><span class="character-role">CENTER / VOCAL</span><h3>神谷 陽翔</h3><p class="character-name-en">Haruto Kamiya</p><p>まっすぐな歌声で、ラグティアを明るく照らすセンター。</p></div>
+          <div><span class="character-role">CENTER / VOCAL</span><h3>神谷 陽翔</h3><p class="character-name-en">Haruto Kamiya</p></div>
           <a class="btn" href="/characters/01_haruto.html">View profile</a>
         </article>
         <article class="card character-card">
           <div class="character-visual character-visual-autograph" data-char="koh"><img src="/assets/img/autograph/02_koh.png" alt="水無月 煌 サイン"></div>
-          <div><span class="character-role">DANCE / CHOREOGRAPHY</span><h3>水無月 煌</h3><p class="character-name-en">Koh Minazuki</p><p>美意識と直感でステージの空気を変えるダンサー。</p></div>
+          <div><span class="character-role">DANCE / CHOREOGRAPHY</span><h3>水無月 煌</h3><p class="character-name-en">Koh Minazuki</p></div>
           <a class="btn" href="/characters/02_koh.html">View profile</a>
         </article>
         <article class="card character-card">
           <div class="character-visual character-visual-autograph" data-char="ryoya"><img src="/assets/img/autograph/03_ryoya.png" alt="天羽 涼弥 サイン"></div>
-          <div><span class="character-role">COSTUME / MODEL</span><h3>天羽 涼弥</h3><p class="character-name-en">Ryoya Amahane</p><p>衣装とファッションで、グループの世界観を形にする。</p></div>
+          <div><span class="character-role">COSTUME / MODEL</span><h3>天羽 涼弥</h3><p class="character-name-en">Ryoya Amahane</p></div>
           <a class="btn" href="/characters/03_ryoya.html">View profile</a>
         </article>
         <article class="card character-card">
           <div class="character-visual character-visual-autograph" data-char="ray"><img src="/assets/img/autograph/04_ray.png" alt="氷堂 怜 サイン"></div>
-          <div><span class="character-role">LEADER / ACTOR</span><h3>氷堂 怜</h3><p class="character-name-en">Ray Hyodo</p><p>静かな安心感で、ラグティアを支えるリーダー。</p></div>
+          <div><span class="character-role">LEADER / ACTOR</span><h3>氷堂 怜</h3><p class="character-name-en">Ray</p></div>
           <a class="btn" href="/characters/04_ray.html">View profile</a>
         </article>
         <article class="card character-card">
           <div class="character-visual character-visual-autograph" data-char="tsukasa"><img src="/assets/img/autograph/05_tsukasa.png" alt="九条 司 サイン"></div>
-          <div><span class="character-role">SONGWRITING / PIANO</span><h3>九条 司</h3><p class="character-name-en">Tsukasa Kujo</p><p>音と言葉で、ラグティアの核を作る天才作曲家。</p></div>
+          <div><span class="character-role">SONGWRITING / PIANO</span><h3>九条 司</h3><p class="character-name-en">Tsukasa Kujo</p></div>
           <a class="btn" href="/characters/05_tsukasa.html">View profile</a>
         </article>
       </div>
+      <div class="section-actions"><a class="btn" href="/characters/">CHARACTERS一覧へ</a></div>
     </section>
 
-    <section class="section" id="route-preview">
-      <div class="grid grid-2">
-        <article class="card">
-          <span class="section-label">GAME</span>
-          <h2>あなたが主人公になるゲーム版。</h2>
-          <p>ゲーム版では主人公名を固定せず、プレイヤー自身が新人アーティストとして芸能界での三年間を歩みます。</p>
-          <div class="section-actions"><a class="btn btn-primary" href="/game/">ゲーム版へ</a></div>
-        </article>
-        <article class="card">
-          <span class="section-label">NOVEL</span>
-          <h2>物語として読むノベル版。</h2>
-          <p>ノベル版は、同一IPの仕事面と成長面を切り出した別媒体展開です。noteでの公開導線は準備中です。</p>
-          <div class="section-actions"><a class="btn is-disabled" href="#" data-note-link aria-disabled="true">Coming Soon</a><a class="btn" href="/novel/">ノベル版へ</a></div>
-        </article>
+    <section class="section" id="music">
+      <div class="section-head">
+        <span class="section-label">MUSIC</span>
+        <h2>楽曲展開は準備中。</h2>
+        <p class="lead">「音で、恋する。」の体験に接続する楽曲展開情報を、順次公開していきます。</p>
+        <div class="section-actions"><a class="btn" href="/music/">MUSICへ</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="novel">
+      <div class="section-head">
+        <span class="section-label">NOVEL</span>
+        <h2>物語として読むノベル版。</h2>
+        <p class="lead">ノベル版は、同一IPの仕事面と成長面を切り出した別媒体展開です。noteでの公開導線は準備中です。</p>
+        <div class="section-actions"><a class="btn is-disabled" href="#" data-note-link aria-disabled="true">Coming Soon</a><a class="btn" href="/novel/">ノベル版へ</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="news">
+      <div class="section-head">
+        <span class="section-label">NEWS</span>
+        <h2>お知らせ</h2>
+        <p class="lead">ティザーサイト情報を中心に、更新内容を順次お知らせします。</p>
+        <div class="section-actions"><a class="btn" href="/news/">NEWS一覧へ</a></div>
       </div>
     </section>
   </main>
-
-  <div class="modal-backdrop" data-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal">
-      <h2 class="modal-title" id="modal-title" data-modal-title></h2>
-      <div class="modal-body" data-modal-body></div>
-      <div class="modal-actions"><button class="btn" type="button" data-modal-close>閉じる</button></div>
-    </div>
-  </div>
 
   <footer class="footer">
     <div class="footer-inner">
@@ -168,7 +193,9 @@
   </footer>
 </div>
 <script src="/assets/js/site-data.js"></script>
+<script src="/assets/js/teaser-data.js"></script>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/venue.js"></script>
 <script src="/assets/js/analytics.js"></script>
 </body>
 </html>
