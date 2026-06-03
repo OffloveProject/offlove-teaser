@@ -39,46 +39,80 @@
       <p class="hero-lead">芸能界で出会う、仕事と恋と音楽の物語。</p>
     </section>
 
-    <section class="venue-section" aria-labelledby="venue-heading">
-      <div class="venue-heading">
-        <p class="venue-heading-line">━━━━━━━━━━━━━━━━━━━━</p>
-        <h2 id="venue-heading">開演前の会場</h2>
-        <p class="venue-heading-line">━━━━━━━━━━━━━━━━━━━━</p>
-      </div>
-      <div class="venue-stage" aria-label="開演前の会場UI">
-        <div class="venue-stage-sign">
-          <span class="venue-stage-main">MAIN STAGE</span>
-          <span class="venue-stage-sub">PREPARING FOR OPENING</span>
+    <section class="venue-section" aria-label="開演前の会場マップ">
+      <div class="venue-map">
+        <div class="venue-floor" aria-hidden="true"></div>
+
+        <div class="venue-stage">
+          <div class="venue-stage-truss" aria-hidden="true"></div>
+          <div class="venue-stage-screen">
+            <span class="venue-stage-main">MAIN STAGE</span>
+            <span class="venue-stage-sub">PREPARING FOR OPENING</span>
+          </div>
+          <div class="venue-stage-light venue-stage-light-l" aria-hidden="true"></div>
+          <div class="venue-stage-light venue-stage-light-r" aria-hidden="true"></div>
         </div>
 
-        <div class="venue-booths" aria-label="ブースメニュー">
-          <button class="venue-booth" type="button" data-booth="about" aria-label="ABOUTブースを開く"><b>ABOUT</b><span>作品概要</span></button>
-          <button class="venue-booth" type="button" data-booth="game" aria-label="GAMEブースを開く"><b>GAME</b><span>ゲーム版</span></button>
-          <button class="venue-booth" type="button" data-booth="characters" aria-label="CHARACTERSブースを開く"><b>CHARACTERS</b><span>人物紹介</span></button>
-          <button class="venue-booth" type="button" data-booth="music" aria-label="MUSICブースを開く"><b>MUSIC</b><span>楽曲展開</span></button>
-          <button class="venue-booth" type="button" data-booth="novel" aria-label="NOVELブースを開く"><b>NOVEL</b><span>ノベル版</span></button>
-          <button class="venue-booth" type="button" data-booth="news" aria-label="NEWSブースを開く"><b>NEWS</b><span>お知らせ</span></button>
+        <div class="venue-booths">
+          <button class="venue-booth booth-about" type="button" data-booth="about" aria-label="INFO BOOTH（ABOUT）を見る">
+            <span class="booth-roof" aria-hidden="true"></span>
+            <span class="booth-counter"><span class="booth-kind">INFO BOOTH</span><span class="booth-name">ABOUT</span></span>
+          </button>
+          <button class="venue-booth booth-game" type="button" data-booth="game" aria-label="DEMO BOOTH（GAME）を見る">
+            <span class="booth-roof" aria-hidden="true"></span>
+            <span class="booth-counter"><span class="booth-kind">DEMO BOOTH</span><span class="booth-name">GAME</span></span>
+          </button>
+          <button class="venue-booth booth-characters" type="button" data-booth="characters" aria-label="CHARACTER DISPLAY（CHARACTERS）を見る">
+            <span class="booth-roof" aria-hidden="true"></span>
+            <span class="booth-counter"><span class="booth-kind">CHARACTER DISPLAY</span><span class="booth-name">CHARACTERS</span></span>
+          </button>
+          <button class="venue-booth booth-music" type="button" data-booth="music" aria-label="MUSIC KIOSK（MUSIC）を見る">
+            <span class="booth-roof" aria-hidden="true"></span>
+            <span class="booth-counter"><span class="booth-kind">MUSIC KIOSK</span><span class="booth-name">MUSIC</span></span>
+          </button>
+          <button class="venue-booth booth-novel" type="button" data-booth="novel" aria-label="NOVEL BOOTH（NOVEL）を見る">
+            <span class="booth-roof" aria-hidden="true"></span>
+            <span class="booth-counter"><span class="booth-kind">NOVEL BOOTH</span><span class="booth-name">NOVEL</span></span>
+          </button>
+          <button class="venue-booth booth-news" type="button" data-booth="news" aria-label="NEWS STAND（NEWS）を見る">
+            <span class="booth-roof" aria-hidden="true"></span>
+            <span class="booth-counter"><span class="booth-kind">NEWS STAND</span><span class="booth-name">NEWS</span></span>
+          </button>
         </div>
 
-        <div class="venue-npcs" aria-label="NPC">
-          <button class="venue-npc" type="button" data-npc="fan" aria-label="ファンに話しかける"><span>Fan</span><b>ファン</b></button>
-          <button class="venue-npc" type="button" data-npc="staff" aria-label="スタッフに話しかける"><span>Staff</span><b>スタッフ</b></button>
-          <button class="venue-npc" type="button" data-npc="industry" aria-label="関係者に話しかける"><span>Industry Guest</span><b>関係者</b></button>
+        <div class="venue-npcs">
+          <button class="venue-npc npc-fan" type="button" data-npc="fan" aria-label="ファンに話しかける">
+            <span class="npc-avatar" aria-hidden="true"></span>
+            <span class="npc-label">Fan / ファン</span>
+          </button>
+          <button class="venue-npc npc-staff" type="button" data-npc="staff" aria-label="スタッフに話しかける">
+            <span class="npc-avatar" aria-hidden="true"></span>
+            <span class="npc-label">Staff / スタッフ</span>
+          </button>
+          <button class="venue-npc npc-industry" type="button" data-npc="industry" aria-label="関係者に話しかける">
+            <span class="npc-avatar" aria-hidden="true"></span>
+            <span class="npc-label">Industry Guest / 関係者</span>
+          </button>
         </div>
       </div>
     </section>
 
-    <section class="venue-dialogue" data-adv-box aria-live="polite" aria-label="会話ボックス" hidden>
-      <p class="venue-dialogue-name" data-adv-name></p>
-      <p class="venue-dialogue-text" data-adv-text></p>
-    </section>
-
-    <section class="venue-info-panel" data-booth-panel aria-live="polite" aria-label="ブース情報" hidden>
+    <div class="venue-info-panel" data-booth-panel role="dialog" aria-live="polite" aria-label="ブース情報" hidden>
+      <button class="venue-overlay-close" type="button" data-booth-close aria-label="ブース情報を閉じる">×</button>
       <p class="venue-info-label" data-booth-label></p>
       <h3 class="venue-info-title" data-booth-title></h3>
       <p class="venue-info-body" data-booth-body></p>
-      <a class="btn" data-booth-link href="#">詳細を見る</a>
-    </section>
+      <a class="btn btn-primary" data-booth-link href="#">詳細を見る</a>
+    </div>
+
+    <div class="venue-dialogue" data-adv-box role="dialog" aria-live="polite" aria-label="会話ボックス" hidden>
+      <button class="venue-overlay-close" type="button" data-adv-close aria-label="会話を閉じる">×</button>
+      <p class="venue-dialogue-name" data-adv-name></p>
+      <button class="venue-dialogue-window" type="button" data-adv-next aria-label="次の話を聞く">
+        <span class="venue-dialogue-text" data-adv-text></span>
+        <span class="venue-dialogue-hint" aria-hidden="true">▶ クリックで次の話</span>
+      </button>
+    </div>
 
     <section class="section" id="about">
       <div class="section-head">
