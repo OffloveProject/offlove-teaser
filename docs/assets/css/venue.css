@@ -10,12 +10,12 @@
   margin: 0 auto;
 }
 
-/* ============ 会場マップ全体 ============ */
+/* ============ 会場マップ全体（会場シーン + 会話UIスロットの縦積み） ============ */
 .venue-map {
-  /* 下部に会話ボックス専用のセーフエリアを確保する */
-  --venue-dialogue-space: 150px;
   position: relative;
-  min-height: 810px;
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -27,13 +27,29 @@
   isolation: isolate;
 }
 
-/* 床・通路の遠近感 */
+/* 会場シーン：ステージ・ブース・NPC・情報パネルの座標基準 */
+.venue-scene {
+  position: relative;
+  min-height: 660px;
+  overflow: hidden;
+}
+
+/* ADV会話UI領域：会場シーンの下に独立して配置 */
+.venue-dialogue-slot {
+  position: relative;
+  min-height: 150px;
+  padding: 18px 20px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(8,8,22,0.5), rgba(6,6,16,0.7));
+}
+
+/* 床・通路の遠近感（会場シーン下端基準） */
 .venue-floor {
   position: absolute;
   left: 50%;
-  bottom: var(--venue-dialogue-space);
+  bottom: 0;
   width: 200%;
-  height: 50%;
+  height: 56%;
   transform: translateX(-50%) perspective(540px) rotateX(62deg);
   transform-origin: bottom center;
   background:
@@ -44,8 +60,8 @@
   z-index: 0;
 }
 
-/* 中央の通路スポット */
-.venue-map::before {
+/* 中央の通路スポット（会場シーン基準） */
+.venue-scene::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -124,14 +140,11 @@
 .venue-stage-light-r { right: -30px; transform: rotate(-14deg); }
 
 /* ============ ブース（会場オブジェクト） ============ */
-/* inset:0 を明示展開し、bottom に会話ボックス用セーフエリアを確保する */
+/* 会場シーン全体を座標基準にする（会話UIは別スロットへ分離済み） */
 .venue-booths,
 .venue-npcs {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: var(--venue-dialogue-space);
+  inset: 0;
   z-index: 2;
   pointer-events: none;
 }
@@ -329,15 +342,15 @@
 .npc-staff    { left: 50%; top: 84%; --npc-color: #a9f5ff; }
 .npc-industry { left: 64%; top: 76%; --npc-color: #ffe2a0; }
 
-/* ============ 会話ボックス（会場マップ内 下部ウィンドウ） ============ */
-/* position:absolute で .venue-map に属させ、ページスクロールに追従させない */
+/* ============ 会話ボックス（ADV専用スロット内に通常フロー配置） ============ */
+/* position:fixed には戻さない。.venue-dialogue-slot 内に収め、会場オブジェクトを隠さない */
 .venue-dialogue {
-  position: absolute;
-  left: 50%;
-  bottom: 24px;
-  z-index: 20;
-  width: min(760px, calc(100% - 40px));
-  transform: translateX(-50%);
+  position: relative;
+  left: auto;
+  bottom: auto;
+  transform: none;
+  width: min(760px, 100%);
+  margin: 0 auto;
   border: 1px solid var(--line-strong);
   border-radius: 18px;
   padding: 16px 20px 18px;
@@ -441,53 +454,55 @@
   outline: none;
 }
 
-/* ============ レスポンシブ：縦長会場ミニマップ（カード化は廃止） ============ */
-/* スマホでも .venue-map / .venue-booths / .venue-npcs / .venue-booth / .venue-npc は
-   absolute 配置を維持し、座標だけ縦長ミニマップ用に組み替える。 */
+/* ============ レスポンシブ：縮小ゲーム画面（カード化は廃止） ============ */
+/* スマホでも .venue-scene / .venue-booths / .venue-npcs / .venue-booth / .venue-npc は
+   absolute 配置を維持。会話UIは .venue-dialogue-slot 側に出るため、
+   会場シーンを縦に伸ばしすぎない。 */
 @media (max-width: 900px) {
-  .venue-map {
-    /* 会話ボックス用セーフエリアを拡大しつつ高さを確保 */
-    --venue-dialogue-space: 170px;
-    min-height: 880px;
+  /* 会場シーンは1画面に収まる高さに抑える */
+  .venue-scene {
+    min-height: 620px;
   }
 
-  /* ステージは上部中央に絶対配置のまま、幅だけ広げる */
+  /* ステージは上部中央の絶対配置を維持しつつ小型化 */
   .venue-stage {
     position: absolute;
-    top: 4%;
+    top: 5%;
     left: 50%;
-    width: 82%;
+    width: 72%;
     transform: translateX(-50%);
   }
+  .venue-stage-screen { padding: 20px 12px 24px; }
+  .venue-stage-sub { font-size: clamp(16px, 4vw, 24px); }
 
-  /* 縦長ミニマップの座標（上→中→下→NPC） */
-  .booth-about      { left: 28%; top: 31%; }
-  .booth-game       { left: 72%; top: 31%; }
-  .booth-characters { left: 28%; top: 45%; }
-  .booth-music      { left: 72%; top: 45%; }
-  .booth-novel      { left: 28%; top: 59%; }
-  .booth-news       { left: 72%; top: 59%; }
+  /* 会場シーン620px前提の座標 */
+  .booth-about      { left: 28%; top: 34%; }
+  .booth-game       { left: 72%; top: 34%; }
+  .booth-characters { left: 28%; top: 49%; }
+  .booth-music      { left: 72%; top: 49%; }
+  .booth-novel      { left: 28%; top: 64%; }
+  .booth-news       { left: 72%; top: 64%; }
 
-  .npc-fan      { left: 28%; top: 74%; }
-  .npc-staff    { left: 50%; top: 78%; }
-  .npc-industry { left: 72%; top: 74%; }
+  .npc-fan      { left: 28%; top: 80%; }
+  .npc-staff    { left: 50%; top: 84%; }
+  .npc-industry { left: 72%; top: 80%; }
 
-  /* ブースを小型の会場オブジェクトに */
-  .venue-booth { width: 120px; }
-  .booth-roof { height: 22px; }
-  .booth-counter { min-height: 52px; padding: 9px 8px 10px; }
-  .booth-kind { font-size: 7px; letter-spacing: 0.08em; }
-  .booth-name { font-size: 11px; letter-spacing: 0.08em; }
+  /* ブースをさらに小型の会場オブジェクトに */
+  .venue-booth { width: 104px; }
+  .booth-roof { height: 18px; }
+  .booth-counter { min-height: 42px; padding: 7px 6px 8px; }
+  .booth-kind { font-size: 6px; }
+  .booth-name { font-size: 9px; }
 
-  /* NPCは人型のまま少しコンパクトに */
-  .npc-avatar { width: 26px; height: 38px; }
+  /* NPCは人型のままコンパクトに */
+  .npc-avatar { width: 22px; height: 32px; }
+  .npc-label { font-size: 9px; padding: 2px 6px; }
 
-  /* 会話/情報パネルは会場マップ内の下部セーフエリアに収める */
-  .venue-info-panel,
-  .venue-dialogue {
+  /* 情報パネルは会場シーン内の下部中央寄せ（会話スロットとは別） */
+  .venue-info-panel {
     left: 12px;
     right: 12px;
-    bottom: 16px;
+    bottom: 12px;
     top: auto;
     width: auto;
     transform: none;
@@ -495,34 +510,34 @@
 }
 
 @media (max-width: 560px) {
-  .venue-map {
-    --venue-dialogue-space: 180px;
-    min-height: 940px;
+  .venue-scene {
+    min-height: 600px;
   }
 
   .venue-stage {
-    top: 4%;
-    width: 90%;
+    top: 5%;
+    width: 78%;
   }
 
-  .booth-about      { left: 28%; top: 30%; }
-  .booth-game       { left: 72%; top: 30%; }
-  .booth-characters { left: 28%; top: 43%; }
-  .booth-music      { left: 72%; top: 43%; }
-  .booth-novel      { left: 28%; top: 56%; }
-  .booth-news       { left: 72%; top: 56%; }
+  .booth-about      { left: 28%; top: 33%; }
+  .booth-game       { left: 72%; top: 33%; }
+  .booth-characters { left: 28%; top: 48%; }
+  .booth-music      { left: 72%; top: 48%; }
+  .booth-novel      { left: 28%; top: 63%; }
+  .booth-news       { left: 72%; top: 63%; }
 
-  .npc-fan      { left: 25%; top: 72%; }
-  .npc-staff    { left: 50%; top: 76%; }
-  .npc-industry { left: 75%; top: 72%; }
+  .npc-fan      { left: 25%; top: 80%; }
+  .npc-staff    { left: 50%; top: 84%; }
+  .npc-industry { left: 75%; top: 80%; }
 
-  .venue-booth { width: 96px; }
-  .booth-roof { height: 18px; }
-  .booth-counter { min-height: 44px; padding: 7px 5px 8px; }
-  .booth-kind { font-size: 6px; }
-  .booth-name { font-size: 9px; }
+  .venue-booth { width: 84px; }
+  .booth-roof { height: 15px; }
+  .booth-counter { min-height: 36px; padding: 6px 4px 7px; }
+  .booth-kind { font-size: 5.5px; }
+  .booth-name { font-size: 8px; }
 
-  .npc-avatar { width: 24px; height: 34px; }
+  .npc-avatar { width: 20px; height: 30px; }
+  .npc-label { font-size: 8.5px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

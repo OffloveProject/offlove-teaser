@@ -11,8 +11,8 @@
   <meta property="og:image" content="/assets/img/ogp.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260604-4">
-  <link rel="stylesheet" href="/assets/css/venue.css?v=20260604-4">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260604-5">
+  <link rel="stylesheet" href="/assets/css/venue.css?v=20260604-5">
 </head>
 <body>
 <div class="site-shell">
@@ -41,6 +41,7 @@
 
     <section class="venue-section" aria-label="開演前の会場マップ">
       <div class="venue-map">
+        <div class="venue-scene">
         <div class="venue-floor" aria-hidden="true"></div>
 
         <div class="venue-stage">
@@ -102,14 +103,17 @@
           <p class="venue-info-body" data-booth-body></p>
           <a class="btn btn-primary" data-booth-link href="#">詳細を見る</a>
         </div>
+        </div><!-- /.venue-scene -->
 
-        <div class="venue-dialogue" data-adv-box role="dialog" aria-live="polite" aria-label="会話ボックス" hidden>
-          <button class="venue-overlay-close" type="button" data-adv-close aria-label="会話を閉じる">×</button>
-          <p class="venue-dialogue-name" data-adv-name></p>
-          <button class="venue-dialogue-window" type="button" data-adv-next aria-label="次の話を聞く">
-            <span class="venue-dialogue-text" data-adv-text></span>
-            <span class="venue-dialogue-hint" aria-hidden="true">▶ クリックで次の話</span>
-          </button>
+        <div class="venue-dialogue-slot">
+          <div class="venue-dialogue" data-adv-box role="dialog" aria-live="polite" aria-label="会話ボックス" hidden>
+            <button class="venue-overlay-close" type="button" data-adv-close aria-label="会話を閉じる">×</button>
+            <p class="venue-dialogue-name" data-adv-name></p>
+            <button class="venue-dialogue-window" type="button" data-adv-next aria-label="次の話を聞く">
+              <span class="venue-dialogue-text" data-adv-text></span>
+              <span class="venue-dialogue-hint" aria-hidden="true">▶ クリックで次の話</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -226,10 +230,10 @@
     </div>
   </footer>
 </div>
-<script src="/assets/js/site-data.js?v=20260604-4"></script>
-<script src="/assets/js/teaser-data.js?v=20260604-4"></script>
-<script src="/assets/js/main.js?v=20260604-4"></script>
-<script src="/assets/js/venue.js?v=20260604-4"></script>
-<script src="/assets/js/analytics.js?v=20260604-4"></script>
+<script src="/assets/js/site-data.js?v=20260604-5"></script>
+<script src="/assets/js/teaser-data.js?v=20260604-5"></script>
+<script src="/assets/js/main.js?v=20260604-5"></script>
+<script src="/assets/js/venue.js?v=20260604-5"></script>
+<script src="/assets/js/analytics.js?v=20260604-5"></script>
 </body>
 </html>
