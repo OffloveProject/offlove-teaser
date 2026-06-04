@@ -12,8 +12,10 @@
 
 /* ============ 会場マップ全体 ============ */
 .venue-map {
+  /* 下部に会話ボックス専用のセーフエリアを確保する */
+  --venue-dialogue-space: 150px;
   position: relative;
-  min-height: 660px;
+  min-height: 810px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -29,9 +31,9 @@
 .venue-floor {
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: var(--venue-dialogue-space);
   width: 200%;
-  height: 58%;
+  height: 50%;
   transform: translateX(-50%) perspective(540px) rotateX(62deg);
   transform-origin: bottom center;
   background:
@@ -122,10 +124,14 @@
 .venue-stage-light-r { right: -30px; transform: rotate(-14deg); }
 
 /* ============ ブース（会場オブジェクト） ============ */
+/* inset:0 を明示展開し、bottom に会話ボックス用セーフエリアを確保する */
 .venue-booths,
 .venue-npcs {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: var(--venue-dialogue-space);
   z-index: 2;
   pointer-events: none;
 }
@@ -232,6 +238,12 @@
 .booth-novel      { left: 30%; top: 82%; --booth-a: #b8862f; --booth-b: #ffe2a0; }
 .booth-news       { left: 70%; top: 82%; --booth-a: #8d57c8; --booth-b: #d6b6ff; }
 
+/* PCのみ：NOVEL / NEWS を左右へ逃がしてNPCとの重なりを回避（暫定） */
+@media (min-width: 901px) {
+  .booth-novel { left: 20%; top: 82%; }
+  .booth-news  { left: 80%; top: 82%; }
+}
+
 /* ============ NPC（人型シルエット） ============ */
 .venue-npc {
   --npc-color: #ffe2a0;
@@ -322,9 +334,9 @@
 .venue-dialogue {
   position: absolute;
   left: 50%;
-  bottom: 18px;
+  bottom: 24px;
   z-index: 20;
-  width: min(720px, calc(100% - 32px));
+  width: min(760px, calc(100% - 40px));
   transform: translateX(-50%);
   border: 1px solid var(--line-strong);
   border-radius: 18px;
@@ -441,7 +453,8 @@
     flex-direction: column;
     gap: 18px;
     min-height: 0;
-    padding: 20px 16px 26px;
+    /* 会話ボックス/情報パネル用に下部余白を確保 */
+    padding: 20px 16px 170px;
   }
   .venue-floor,
   .venue-map::before,
@@ -494,7 +507,7 @@
   .venue-dialogue {
     left: 12px;
     right: 12px;
-    bottom: 12px;
+    bottom: 16px;
     top: auto;
     width: auto;
     transform: none;
