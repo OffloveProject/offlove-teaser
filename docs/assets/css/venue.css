@@ -66,6 +66,15 @@
   display: none;
 }
 
+.venue-map.is-info-open .venue-dialogue-slot {
+  min-height: 260px;
+}
+
+.venue-map.is-info-open .venue-dialogue-placeholder,
+.venue-map.is-dialogue-open .venue-dialogue-placeholder {
+  display: none;
+}
+
 /* 旧CSS床。会場背景はinline SVGへ寄せる */
 .venue-floor {
   display: none;
@@ -215,6 +224,14 @@
   transform: translate(-50%, -50%) translateY(-6px);
   outline: none;
   filter: drop-shadow(0 0 14px var(--booth-b));
+}
+
+.venue-booth.is-active {
+  filter: drop-shadow(0 0 16px var(--booth-b)) drop-shadow(0 0 28px rgba(255,255,255,0.16));
+}
+
+.venue-booth.is-active .booth-counter {
+  border-color: var(--booth-b);
 }
 
 /* テント屋根 */
@@ -440,11 +457,13 @@
 /* position:absolute で .venue-map に属させ、ページスクロールに追従させない */
 .venue-info-panel {
   position: absolute;
-  right: 24px;
-  top: 50%;
+  left: var(--panel-left, 24px);
+  top: var(--panel-top, 120px);
+  right: auto;
+  bottom: auto;
   z-index: 20;
   width: min(360px, calc(100% - 48px));
-  transform: translateY(-50%);
+  transform: none;
   border: 1px solid var(--line-strong);
   border-radius: 20px;
   padding: 24px 22px 22px;
@@ -541,10 +560,14 @@
   .venue-info-panel {
     left: 12px;
     right: 12px;
-    bottom: 12px;
+    bottom: 20px;
     top: auto;
     width: auto;
     transform: none;
+  }
+
+  .venue-map.is-info-open .venue-dialogue-slot {
+    min-height: 300px;
   }
 }
 
@@ -577,6 +600,16 @@
 
   .npc-avatar { width: 20px; height: 30px; }
   .npc-label { font-size: 8.5px; }
+
+  .venue-info-panel {
+    left: 12px;
+    right: 12px;
+    bottom: 16px;
+  }
+
+  .venue-map.is-info-open .venue-dialogue-slot {
+    min-height: 320px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
