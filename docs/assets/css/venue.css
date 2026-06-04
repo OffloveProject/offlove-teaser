@@ -52,6 +52,20 @@
   background: linear-gradient(180deg, rgba(8,8,22,0.5), rgba(6,6,16,0.7));
 }
 
+.venue-dialogue-placeholder {
+  width: min(760px, 100%);
+  margin: 22px auto 0;
+  color: var(--soft);
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  opacity: 0.72;
+}
+
+.venue-dialogue:not([hidden]) + .venue-dialogue-placeholder {
+  display: none;
+}
+
 /* 旧CSS床。会場背景はinline SVGへ寄せる */
 .venue-floor {
   display: none;
