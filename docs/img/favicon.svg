@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Offstage Love">
+  <defs>
+    <radialGradient id="g" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#fff7ff"/>
+      <stop offset="0.35" stop-color="#ff82bd"/>
+      <stop offset="0.72" stop-color="#a98bff"/>
+      <stop offset="1" stop-color="#080817"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#080817"/>
+  <path d="M31.2 10.4c2.4 9.8 5.9 13.3 16 15.8-10.1 2.5-13.6 6-16 15.8-2.4-9.8-5.9-13.3-16-15.8 10.1-2.5 13.6-6 16-15.8Z" fill="url(#g)"/>
+  <path d="M45.5 36.2c1.2 4.8 3 6.5 7.8 7.8-4.8 1.2-6.6 3-7.8 7.8-1.2-4.8-3-6.6-7.8-7.8 4.8-1.2 6.6-3 7.8-7.8Z" fill="#ffe2a0"/>
+</svg>
