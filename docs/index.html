@@ -11,8 +11,8 @@
   <meta property="og:image" content="/assets/img/ogp.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260604-5">
-  <link rel="stylesheet" href="/assets/css/venue.css?v=20260604-5">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260604-6">
+  <link rel="stylesheet" href="/assets/css/venue.css?v=20260604-6">
 </head>
 <body>
 <div class="site-shell">
@@ -42,7 +42,102 @@
     <section class="venue-section" aria-label="開演前の会場マップ">
       <div class="venue-map">
         <div class="venue-scene">
-        <div class="venue-floor" aria-hidden="true"></div>
+          <svg class="venue-backdrop" viewBox="0 0 1200 640" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="venueSky" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#11102c"/>
+                <stop offset="48%" stop-color="#09091d"/>
+                <stop offset="100%" stop-color="#050512"/>
+              </linearGradient>
+              <radialGradient id="venueGlow" cx="50%" cy="35%" r="55%">
+                <stop offset="0%" stop-color="#ffe2ff" stop-opacity="0.18"/>
+                <stop offset="46%" stop-color="#a98bff" stop-opacity="0.09"/>
+                <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="venueFloor" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#16153d" stop-opacity="0.72"/>
+                <stop offset="100%" stop-color="#050511" stop-opacity="0.96"/>
+              </linearGradient>
+              <linearGradient id="venueAisle" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#ffe2a0" stop-opacity="0.18"/>
+                <stop offset="70%" stop-color="#ff82bd" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+              </linearGradient>
+              <radialGradient id="venueLamp" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffe2a0" stop-opacity="0.75"/>
+                <stop offset="100%" stop-color="#ffe2a0" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <rect width="1200" height="640" fill="url(#venueSky)"/>
+            <rect width="1200" height="640" fill="url(#venueGlow)"/>
+
+            <g opacity="0.32">
+              <path d="M80 170 C220 120 360 126 500 162" fill="none" stroke="#7a6fb4" stroke-width="4"/>
+              <path d="M700 162 C850 126 990 120 1120 170" fill="none" stroke="#7a6fb4" stroke-width="4"/>
+              <path d="M70 192 L250 138 L420 164 L250 206 Z" fill="#10102c" stroke="#ffffff" stroke-opacity="0.09"/>
+              <path d="M1130 192 L950 138 L780 164 L950 206 Z" fill="#10102c" stroke="#ffffff" stroke-opacity="0.09"/>
+            </g>
+
+            <g opacity="0.28">
+              <rect x="105" y="156" width="22" height="82" rx="8" fill="#a98bff"/>
+              <rect x="1073" y="156" width="22" height="82" rx="8" fill="#ff82bd"/>
+              <circle cx="116" cy="148" r="22" fill="url(#venueLamp)"/>
+              <circle cx="1084" cy="148" r="22" fill="url(#venueLamp)"/>
+            </g>
+
+            <path d="M330 152 H870 L960 280 H240 Z" fill="#080819" stroke="#ffffff" stroke-opacity="0.12"/>
+            <path d="M400 176 H800 L850 265 H350 Z" fill="#15133b" opacity="0.62"/>
+            <path d="M330 152 H870 L830 180 H370 Z" fill="#24204a" opacity="0.72"/>
+
+            <path d="M0 326 H1200 V640 H0 Z" fill="url(#venueFloor)"/>
+            <path d="M520 270 H680 L830 640 H370 Z" fill="url(#venueAisle)" stroke="#ffe2a0" stroke-opacity="0.08"/>
+
+            <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1">
+              <path d="M600 280 L150 640"/>
+              <path d="M600 280 L300 640"/>
+              <path d="M600 280 L450 640"/>
+              <path d="M600 280 L600 640"/>
+              <path d="M600 280 L750 640"/>
+              <path d="M600 280 L900 640"/>
+              <path d="M600 280 L1050 640"/>
+              <path d="M110 400 H1090"/>
+              <path d="M70 470 H1130"/>
+              <path d="M30 555 H1170"/>
+            </g>
+
+            <g opacity="0.45">
+              <path d="M120 286 H455 L420 328 H82 Z" fill="#24204a" stroke="#a98bff" stroke-opacity="0.18"/>
+              <path d="M745 286 H1080 L1118 328 H780 Z" fill="#24204a" stroke="#ff82bd" stroke-opacity="0.18"/>
+              <path d="M65 405 H360 L325 442 H35 Z" fill="#172d3f" stroke="#6be8c8" stroke-opacity="0.18"/>
+              <path d="M840 405 H1135 L1165 442 H875 Z" fill="#16283e" stroke="#a9f5ff" stroke-opacity="0.18"/>
+              <path d="M185 506 H470 L440 548 H150 Z" fill="#342717" stroke="#ffe2a0" stroke-opacity="0.18"/>
+              <path d="M730 506 H1015 L1050 548 H760 Z" fill="#2b1d42" stroke="#d6b6ff" stroke-opacity="0.18"/>
+            </g>
+
+            <g opacity="0.34">
+              <path d="M245 586 C330 558 405 558 490 586" fill="none" stroke="#ff82bd" stroke-width="2"/>
+              <path d="M710 586 C795 558 870 558 955 586" fill="none" stroke="#ffe2a0" stroke-width="2"/>
+              <circle cx="256" cy="585" r="7" fill="#ff82bd"/>
+              <circle cx="944" cy="585" r="7" fill="#ffe2a0"/>
+            </g>
+
+            <g opacity="0.38">
+              <path d="M60 620 C100 590 130 590 165 620" fill="#102d24"/>
+              <path d="M1040 620 C1080 590 1110 590 1145 620" fill="#102d24"/>
+              <rect x="165" y="603" width="74" height="5" rx="3" fill="#ffe2a0" opacity="0.18"/>
+              <rect x="960" y="603" width="74" height="5" rx="3" fill="#ffe2a0" opacity="0.18"/>
+            </g>
+
+            <g fill="#ffffff" opacity="0.28">
+              <circle cx="150" cy="78" r="2"/>
+              <circle cx="285" cy="52" r="1.6"/>
+              <circle cx="450" cy="84" r="1.8"/>
+              <circle cx="765" cy="64" r="1.6"/>
+              <circle cx="920" cy="92" r="1.8"/>
+              <circle cx="1070" cy="70" r="2"/>
+            </g>
+          </svg>
 
         <div class="venue-stage">
           <div class="venue-stage-truss" aria-hidden="true"></div>
@@ -230,10 +325,10 @@
     </div>
   </footer>
 </div>
-<script src="/assets/js/site-data.js?v=20260604-5"></script>
-<script src="/assets/js/teaser-data.js?v=20260604-5"></script>
-<script src="/assets/js/main.js?v=20260604-5"></script>
-<script src="/assets/js/venue.js?v=20260604-5"></script>
-<script src="/assets/js/analytics.js?v=20260604-5"></script>
+<script src="/assets/js/site-data.js?v=20260604-6"></script>
+<script src="/assets/js/teaser-data.js?v=20260604-6"></script>
+<script src="/assets/js/main.js?v=20260604-6"></script>
+<script src="/assets/js/venue.js?v=20260604-6"></script>
+<script src="/assets/js/analytics.js?v=20260604-6"></script>
 </body>
 </html>
