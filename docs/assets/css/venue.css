@@ -54,7 +54,7 @@
 }
 
 .venue-svg-particle {
-  animation: venueSvgParticleFade 10s ease-in-out infinite;
+  animation: venueSvgParticleFade 8s ease-in-out infinite;
 }
 
 /* ADV会話UI領域：会場シーンの下に独立して配置 */
@@ -133,7 +133,7 @@
   background-size: 170px 170px, 250px 250px;
   background-position: 38px 24px, 120px 70px;
   mask-image: linear-gradient(180deg, black 0%, rgba(0,0,0,0.55) 42%, transparent 92%);
-  animation: venueParticleDrift 11s ease-in-out infinite;
+  animation: venueParticleDrift 9s ease-in-out infinite;
 }
 
 /* ============ メインステージ ============ */
@@ -169,7 +169,7 @@
     inset 0 0 40px rgba(120,90,220,0.25),
     0 22px 46px rgba(0,0,0,0.5),
     0 46px 80px rgba(0,0,0,0.44);
-  animation: venueStageBreathe 7s ease-in-out infinite;
+  animation: venueStageBreathe 6s ease-in-out infinite;
 }
 
 .venue-stage-main {
@@ -187,7 +187,7 @@
   letter-spacing: 0.16em;
   font-size: clamp(18px, 2.2vw, 30px);
   text-shadow: 0 0 18px rgba(255,130,189,0.5);
-  animation: venueSignGlow 6.5s ease-in-out infinite;
+  animation: venueSignGlow 5.8s ease-in-out infinite;
 }
 
 /* ステージ両脇のスポットライト光芒（keyframes内でtransformを定義） */
@@ -205,13 +205,13 @@
 
 .venue-stage-light-l {
   left: -30px;
-  animation: venueSpotlightLeft 7s ease-in-out infinite;
+  animation: venueSpotlightLeft 6.5s ease-in-out infinite;
   animation-delay: -2s;
 }
 
 .venue-stage-light-r {
   right: -30px;
-  animation: venueSpotlightRight 8s ease-in-out infinite;
+  animation: venueSpotlightRight 7.5s ease-in-out infinite;
   animation-delay: -5s;
 }
 
@@ -252,7 +252,7 @@
 }
 
 .venue-booth.is-active {
-  filter: drop-shadow(0 0 18px var(--booth-b)) drop-shadow(0 0 32px rgba(255,255,255,0.18));
+  filter: drop-shadow(0 0 22px var(--booth-b)) drop-shadow(0 0 42px rgba(255,255,255,0.26));
 }
 
 .venue-booth.is-active .booth-counter {
@@ -361,7 +361,7 @@
   border-radius: 42% 42% 30% 30% / 55% 55% 30% 30%;
   background: linear-gradient(180deg, var(--npc-color), rgba(0,0,0,0.4));
   box-shadow: 0 0 0 1px rgba(255,255,255,0.16);
-  animation: npcBreath 3.8s ease-in-out infinite;
+  animation: npcBreath 3.2s ease-in-out infinite;
   transition: filter 0.2s ease, transform 0.2s ease;
 }
 
@@ -632,42 +632,42 @@
 
 @keyframes venueSpotlightLeft {
   0%, 100% {
-    opacity: 0.35;
+    opacity: 0.28;
     filter: blur(7px);
-    transform: rotate(10deg);
+    transform: rotate(8deg);
   }
   50% {
-    opacity: 0.78;
-    filter: blur(9px);
-    transform: rotate(18deg);
+    opacity: 0.86;
+    filter: blur(10px);
+    transform: rotate(22deg);
   }
 }
 
 @keyframes venueSpotlightRight {
   0%, 100% {
-    opacity: 0.36;
+    opacity: 0.30;
     filter: blur(7px);
-    transform: rotate(-10deg);
+    transform: rotate(-8deg);
   }
   50% {
-    opacity: 0.76;
-    filter: blur(9px);
-    transform: rotate(-18deg);
+    opacity: 0.84;
+    filter: blur(10px);
+    transform: rotate(-22deg);
   }
 }
 
 @keyframes venueStageBreathe {
   0%, 100% {
     box-shadow:
-      inset 0 0 52px rgba(120,90,220,0.3),
-      0 22px 48px rgba(0,0,0,0.52),
-      0 46px 84px rgba(0,0,0,0.46);
+      inset 0 0 58px rgba(120,90,220,0.38),
+      0 22px 50px rgba(0,0,0,0.52),
+      0 48px 92px rgba(169,139,255,0.3);
   }
   50% {
     box-shadow:
-      inset 0 0 72px rgba(255,130,189,0.42),
-      0 24px 56px rgba(0,0,0,0.54),
-      0 50px 100px rgba(169,139,255,0.4);
+      inset 0 0 84px rgba(255,130,189,0.5),
+      0 24px 58px rgba(0,0,0,0.54),
+      0 54px 112px rgba(169,139,255,0.48);
   }
 }
 
@@ -682,15 +682,17 @@
 
 @keyframes venueSignGlow {
   0%, 100% {
+    color: var(--pink-soft);
     text-shadow:
-      0 0 14px rgba(255,130,189,0.55),
-      0 0 24px rgba(169,139,255,0.18);
+      0 0 16px rgba(255,130,189,0.7),
+      0 0 30px rgba(169,139,255,0.28);
   }
   50% {
+    color: #fff1cf;
     text-shadow:
-      0 0 26px rgba(255,226,160,0.72),
-      0 0 44px rgba(255,130,189,0.44),
-      0 0 58px rgba(169,139,255,0.32);
+      0 0 30px rgba(255,226,160,0.9),
+      0 0 54px rgba(255,130,189,0.62),
+      0 0 72px rgba(169,139,255,0.42);
   }
 }
 
@@ -698,25 +700,28 @@
   0%, 100% {
     transform: translateY(0) scaleY(1);
   }
-  50% {
-    transform: translateY(-4px) scaleY(1.025);
+  45% {
+    transform: translateY(-6px) scaleY(1.045);
+  }
+  60% {
+    transform: translateY(-5px) scaleY(1.035);
   }
 }
 
 @keyframes venueParticleDrift {
   0%, 100% {
-    opacity: 0.24;
-    background-position: 38px 24px, 120px 70px;
+    opacity: 0.22;
+    background-position: 32px 28px, 128px 64px;
   }
   50% {
-    opacity: 0.58;
-    background-position: 64px 8px, 94px 96px;
+    opacity: 0.68;
+    background-position: 76px 2px, 82px 108px;
   }
 }
 
 @keyframes venueLampGlow {
   0%, 100% { opacity: 0.18; }
-  50% { opacity: 0.55; }
+  50% { opacity: 0.62; }
 }
 
 @keyframes venueAislePulse {
@@ -726,7 +731,7 @@
 
 @keyframes venueSvgParticleFade {
   0%, 100% { opacity: 0.18; }
-  50% { opacity: 0.58; }
+  50% { opacity: 0.62; }
 }
 
 @media (prefers-reduced-motion: reduce) {
