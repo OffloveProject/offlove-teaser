@@ -11,8 +11,8 @@
   <meta property="og:image" content="/assets/img/ogp.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260604">
-  <link rel="stylesheet" href="/assets/css/venue.css?v=20260604">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260604-2">
+  <link rel="stylesheet" href="/assets/css/venue.css?v=20260604-2">
 </head>
 <body>
 <div class="site-shell">
@@ -94,25 +94,25 @@
             <span class="npc-label">Industry Guest / 関係者</span>
           </button>
         </div>
+
+        <div class="venue-info-panel" data-booth-panel role="dialog" aria-live="polite" aria-label="ブース情報" hidden>
+          <button class="venue-overlay-close" type="button" data-booth-close aria-label="ブース情報を閉じる">×</button>
+          <p class="venue-info-label" data-booth-label></p>
+          <h3 class="venue-info-title" data-booth-title></h3>
+          <p class="venue-info-body" data-booth-body></p>
+          <a class="btn btn-primary" data-booth-link href="#">詳細を見る</a>
+        </div>
+
+        <div class="venue-dialogue" data-adv-box role="dialog" aria-live="polite" aria-label="会話ボックス" hidden>
+          <button class="venue-overlay-close" type="button" data-adv-close aria-label="会話を閉じる">×</button>
+          <p class="venue-dialogue-name" data-adv-name></p>
+          <button class="venue-dialogue-window" type="button" data-adv-next aria-label="次の話を聞く">
+            <span class="venue-dialogue-text" data-adv-text></span>
+            <span class="venue-dialogue-hint" aria-hidden="true">▶ クリックで次の話</span>
+          </button>
+        </div>
       </div>
     </section>
-
-    <div class="venue-info-panel" data-booth-panel role="dialog" aria-live="polite" aria-label="ブース情報" hidden>
-      <button class="venue-overlay-close" type="button" data-booth-close aria-label="ブース情報を閉じる">×</button>
-      <p class="venue-info-label" data-booth-label></p>
-      <h3 class="venue-info-title" data-booth-title></h3>
-      <p class="venue-info-body" data-booth-body></p>
-      <a class="btn btn-primary" data-booth-link href="#">詳細を見る</a>
-    </div>
-
-    <div class="venue-dialogue" data-adv-box role="dialog" aria-live="polite" aria-label="会話ボックス" hidden>
-      <button class="venue-overlay-close" type="button" data-adv-close aria-label="会話を閉じる">×</button>
-      <p class="venue-dialogue-name" data-adv-name></p>
-      <button class="venue-dialogue-window" type="button" data-adv-next aria-label="次の話を聞く">
-        <span class="venue-dialogue-text" data-adv-text></span>
-        <span class="venue-dialogue-hint" aria-hidden="true">▶ クリックで次の話</span>
-      </button>
-    </div>
 
     <section class="section" id="about">
       <div class="section-head">
@@ -226,10 +226,10 @@
     </div>
   </footer>
 </div>
-<script src="/assets/js/site-data.js?v=20260604"></script>
-<script src="/assets/js/teaser-data.js?v=20260604"></script>
-<script src="/assets/js/main.js?v=20260604"></script>
-<script src="/assets/js/venue.js?v=20260604"></script>
-<script src="/assets/js/analytics.js?v=20260604"></script>
+<script src="/assets/js/site-data.js?v=20260604-2"></script>
+<script src="/assets/js/teaser-data.js?v=20260604-2"></script>
+<script src="/assets/js/main.js?v=20260604-2"></script>
+<script src="/assets/js/venue.js?v=20260604-2"></script>
+<script src="/assets/js/analytics.js?v=20260604-2"></script>
 </body>
 </html>

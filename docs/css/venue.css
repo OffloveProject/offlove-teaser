@@ -130,6 +130,11 @@
   pointer-events: none;
 }
 
+/* NPCラベルがブースに隠れないよう、NPC層をブースより前面へ（暫定） */
+.venue-npcs {
+  z-index: 3;
+}
+
 .venue-booth {
   --booth-a: var(--violet);
   --booth-b: var(--pink);
@@ -281,11 +286,14 @@
 }
 
 .npc-label {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.06em;
+  display: inline-block;
+  font-size: 10.5px;
+  letter-spacing: 0.03em;
   color: var(--muted);
   white-space: nowrap;
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: rgba(6, 6, 18, 0.72);
 }
 
 .venue-npc:hover .npc-avatar,
@@ -305,16 +313,17 @@
   color: var(--text);
 }
 
-.npc-fan      { left: 36%; top: 73%; --npc-color: #ff9ac0; }
-.npc-staff    { left: 50%; top: 80%; --npc-color: #a9f5ff; }
-.npc-industry { left: 64%; top: 73%; --npc-color: #ffe2a0; }
+.npc-fan      { left: 36%; top: 76%; --npc-color: #ff9ac0; }
+.npc-staff    { left: 50%; top: 84%; --npc-color: #a9f5ff; }
+.npc-industry { left: 64%; top: 76%; --npc-color: #ffe2a0; }
 
-/* ============ 会話ボックス（画面下部ウィンドウ） ============ */
+/* ============ 会話ボックス（会場マップ内 下部ウィンドウ） ============ */
+/* position:absolute で .venue-map に属させ、ページスクロールに追従させない */
 .venue-dialogue {
-  position: fixed;
+  position: absolute;
   left: 50%;
-  bottom: 22px;
-  z-index: 120;
+  bottom: 18px;
+  z-index: 20;
   width: min(720px, calc(100% - 32px));
   transform: translateX(-50%);
   border: 1px solid var(--line-strong);
@@ -363,13 +372,14 @@
   letter-spacing: 0.08em;
 }
 
-/* ============ ブース情報パネル（右側に浮かぶUI） ============ */
+/* ============ ブース情報パネル（会場マップ内 右側に浮かぶUI） ============ */
+/* position:absolute で .venue-map に属させ、ページスクロールに追従させない */
 .venue-info-panel {
-  position: fixed;
+  position: absolute;
   right: 24px;
   top: 50%;
-  z-index: 120;
-  width: min(360px, calc(100% - 32px));
+  z-index: 20;
+  width: min(360px, calc(100% - 48px));
   transform: translateY(-50%);
   border: 1px solid var(--line-strong);
   border-radius: 20px;
@@ -478,17 +488,21 @@
     transform: none;
     width: 100%;
   }
+
+  /* スマホは会場マップ内の下部ボトムシート風に固定（マップ外へは追従しない） */
+  .venue-info-panel,
+  .venue-dialogue {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    top: auto;
+    width: auto;
+    transform: none;
+  }
 }
 
 @media (max-width: 560px) {
   .venue-booths { grid-template-columns: 1fr; }
-  .venue-info-panel {
-    right: 50%;
-    top: auto;
-    bottom: 16px;
-    transform: translateX(50%);
-  }
-  .venue-dialogue { bottom: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
