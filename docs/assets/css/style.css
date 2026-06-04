@@ -368,6 +368,21 @@ h3 { font-size: clamp(18px, 2vw, 24px); }
     drop-shadow(0 10px 18px rgba(0,0,0,0.28));
 }
 
+.character-group-visual {
+  margin: 32px auto 40px;
+  max-width: 1080px;
+  aspect-ratio: 16 / 9;
+}
+
+.character-group-visual img {
+  object-fit: contain;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  filter:
+    drop-shadow(0 0 10px rgba(255,255,255,0.26))
+    drop-shadow(0 0 24px rgba(255, 226, 160, 0.38))
+    drop-shadow(0 14px 28px rgba(0,0,0,0.36));
+}
+
 .character-visual:hover,
 .character-visual:focus-within {
   transform: translateY(-4px) scale(1.01);
