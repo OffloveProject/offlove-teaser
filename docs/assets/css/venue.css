@@ -441,68 +441,48 @@
   outline: none;
 }
 
-/* ============ レスポンシブ：会場ミニマップ ============ */
-/* 注意：このブロックがスマホでの「カード化」の原因。
-   - .venue-booths / .venue-npcs を position:static + display:grid にしている点
-   - .venue-booth / .venue-npc を position:static + width:100% にしている点
-   この2つが、絶対配置の会場マップを縦並びカードへフォールバックさせている。
-   PC（901px以上）では適用されないため、PCの非表示原因ではない。 */
+/* ============ レスポンシブ：縦長会場ミニマップ（カード化は廃止） ============ */
+/* スマホでも .venue-map / .venue-booths / .venue-npcs / .venue-booth / .venue-npc は
+   absolute 配置を維持し、座標だけ縦長ミニマップ用に組み替える。 */
 @media (max-width: 900px) {
   .venue-map {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    min-height: 0;
-    /* 会話ボックス/情報パネル用に下部余白を確保 */
-    padding: 20px 16px 170px;
+    /* 会話ボックス用セーフエリアを拡大しつつ高さを確保 */
+    --venue-dialogue-space: 170px;
+    min-height: 880px;
   }
-  .venue-floor,
-  .venue-map::before,
-  .venue-stage-light { display: none; }
 
+  /* ステージは上部中央に絶対配置のまま、幅だけ広げる */
   .venue-stage {
-    position: static;
-    transform: none;
-    width: 100%;
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    width: 82%;
+    transform: translateX(-50%);
   }
 
-  .venue-booths {
-    position: static;
-    inset: auto;
-    pointer-events: auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px 12px;
-    margin-top: 18px;
-  }
-  .venue-booth {
-    position: static;
-    transform: none;
-    width: 100%;
-  }
-  .venue-booth:hover,
-  .venue-booth:focus-visible {
-    transform: translateY(-4px);
-  }
-  .booth-counter::after { display: none; }
+  /* 縦長ミニマップの座標（上→中→下→NPC） */
+  .booth-about      { left: 28%; top: 31%; }
+  .booth-game       { left: 72%; top: 31%; }
+  .booth-characters { left: 28%; top: 45%; }
+  .booth-music      { left: 72%; top: 45%; }
+  .booth-novel      { left: 28%; top: 59%; }
+  .booth-news       { left: 72%; top: 59%; }
 
-  .venue-npcs {
-    position: static;
-    inset: auto;
-    pointer-events: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 14px 6px 0;
-    border-top: 1px dashed var(--line);
-  }
-  .venue-npc {
-    position: static;
-    transform: none;
-    width: 100%;
-  }
+  .npc-fan      { left: 28%; top: 74%; }
+  .npc-staff    { left: 50%; top: 78%; }
+  .npc-industry { left: 72%; top: 74%; }
 
-  /* スマホは会場マップ内の下部ボトムシート風に固定（マップ外へは追従しない） */
+  /* ブースを小型の会場オブジェクトに */
+  .venue-booth { width: 120px; }
+  .booth-roof { height: 22px; }
+  .booth-counter { min-height: 52px; padding: 9px 8px 10px; }
+  .booth-kind { font-size: 7px; letter-spacing: 0.08em; }
+  .booth-name { font-size: 11px; letter-spacing: 0.08em; }
+
+  /* NPCは人型のまま少しコンパクトに */
+  .npc-avatar { width: 26px; height: 38px; }
+
+  /* 会話/情報パネルは会場マップ内の下部セーフエリアに収める */
   .venue-info-panel,
   .venue-dialogue {
     left: 12px;
@@ -515,7 +495,34 @@
 }
 
 @media (max-width: 560px) {
-  .venue-booths { grid-template-columns: 1fr; }
+  .venue-map {
+    --venue-dialogue-space: 180px;
+    min-height: 940px;
+  }
+
+  .venue-stage {
+    top: 4%;
+    width: 90%;
+  }
+
+  .booth-about      { left: 28%; top: 30%; }
+  .booth-game       { left: 72%; top: 30%; }
+  .booth-characters { left: 28%; top: 43%; }
+  .booth-music      { left: 72%; top: 43%; }
+  .booth-novel      { left: 28%; top: 56%; }
+  .booth-news       { left: 72%; top: 56%; }
+
+  .npc-fan      { left: 25%; top: 72%; }
+  .npc-staff    { left: 50%; top: 76%; }
+  .npc-industry { left: 75%; top: 72%; }
+
+  .venue-booth { width: 96px; }
+  .booth-roof { height: 18px; }
+  .booth-counter { min-height: 44px; padding: 7px 5px 8px; }
+  .booth-kind { font-size: 6px; }
+  .booth-name { font-size: 9px; }
+
+  .npc-avatar { width: 24px; height: 34px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
