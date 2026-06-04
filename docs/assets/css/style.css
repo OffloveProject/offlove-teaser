@@ -369,8 +369,9 @@ h3 { font-size: clamp(18px, 2vw, 24px); }
 }
 
 .character-group-visual {
-  margin: 32px auto 40px;
-  max-width: 1080px;
+  margin: 28px auto 36px;
+  width: min(560px, 100%);
+  max-width: 560px;
   aspect-ratio: 16 / 9;
 }
 
