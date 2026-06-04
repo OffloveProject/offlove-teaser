@@ -43,6 +43,20 @@
   pointer-events: none;
 }
 
+.venue-svg-lamp {
+  animation: venueLampGlow 9s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.venue-svg-sweep,
+.venue-svg-aisle {
+  animation: venueAislePulse 12s ease-in-out infinite;
+}
+
+.venue-svg-particle {
+  animation: venueSvgParticleFade 16s ease-in-out infinite;
+}
+
 /* ADV会話UI領域：会場シーンの下に独立して配置 */
 .venue-dialogue-slot {
   position: relative;
@@ -119,6 +133,7 @@
   background-size: 170px 170px, 250px 250px;
   background-position: 38px 24px, 120px 70px;
   mask-image: linear-gradient(180deg, black 0%, rgba(0,0,0,0.55) 42%, transparent 92%);
+  animation: venueParticleDrift 18s ease-in-out infinite;
 }
 
 /* ============ メインステージ ============ */
@@ -137,6 +152,7 @@
   background:
     repeating-linear-gradient(90deg, rgba(255,255,255,0.22) 0 8px, rgba(255,255,255,0.05) 8px 18px);
   box-shadow: 0 0 18px rgba(169,139,255,0.4);
+  animation: venueTrussGlow 11s ease-in-out infinite;
 }
 
 .venue-stage-screen {
@@ -153,6 +169,7 @@
     inset 0 0 40px rgba(120,90,220,0.25),
     0 22px 46px rgba(0,0,0,0.5),
     0 46px 80px rgba(0,0,0,0.44);
+  animation: venueStageBreathe 10s ease-in-out infinite;
 }
 
 .venue-stage-main {
@@ -170,6 +187,7 @@
   letter-spacing: 0.16em;
   font-size: clamp(18px, 2.2vw, 30px);
   text-shadow: 0 0 18px rgba(255,130,189,0.5);
+  animation: venueSignGlow 8s ease-in-out infinite;
 }
 
 /* ステージ両脇のスポットライト光芒 */
@@ -183,10 +201,12 @@
   border-top: 300px solid rgba(255,255,255,0.06);
   filter: blur(6px);
   pointer-events: none;
+  opacity: 0.5;
+  animation: venueSpotlightDrift 9s ease-in-out infinite;
 }
 
-.venue-stage-light-l { left: -30px; transform: rotate(14deg); }
-.venue-stage-light-r { right: -30px; transform: rotate(-14deg); }
+.venue-stage-light-l { left: -30px; transform: rotate(14deg); animation-delay: -2s; }
+.venue-stage-light-r { right: -30px; transform: rotate(-14deg); animation-delay: -5s; }
 
 /* ============ ブース（会場オブジェクト） ============ */
 /* 会場シーン全体を座標基準にする（会話UIは別スロットへ分離済み） */
@@ -225,7 +245,7 @@
 }
 
 .venue-booth.is-active {
-  filter: drop-shadow(0 0 16px var(--booth-b)) drop-shadow(0 0 28px rgba(255,255,255,0.16));
+  filter: drop-shadow(0 0 18px var(--booth-b)) drop-shadow(0 0 32px rgba(255,255,255,0.18));
 }
 
 .venue-booth.is-active .booth-counter {
@@ -334,6 +354,7 @@
   border-radius: 42% 42% 30% 30% / 55% 55% 30% 30%;
   background: linear-gradient(180deg, var(--npc-color), rgba(0,0,0,0.4));
   box-shadow: 0 0 0 1px rgba(255,255,255,0.16);
+  animation: npcBreath 5.8s ease-in-out infinite;
   transition: filter 0.2s ease, transform 0.2s ease;
 }
 
@@ -395,6 +416,10 @@
 .npc-fan      { left: 38%; top: 76%; --npc-color: #ff9ac0; }
 .npc-staff    { left: 50%; top: 84%; --npc-color: #a9f5ff; }
 .npc-industry { left: 62%; top: 76%; --npc-color: #ffe2a0; }
+
+.npc-fan .npc-avatar { animation-delay: -0.6s; }
+.npc-staff .npc-avatar { animation-delay: -2.1s; }
+.npc-industry .npc-avatar { animation-delay: -3.4s; }
 
 /* ============ 会話ボックス（ADV専用スロット内に通常フロー配置） ============ */
 /* 画面固定には戻さない。.venue-dialogue-slot 内に収め、会場オブジェクトを隠さない */
@@ -598,13 +623,98 @@
   }
 }
 
+@keyframes venueSpotlightDrift {
+  0%, 100% {
+    opacity: 0.42;
+    filter: blur(6px);
+  }
+  50% {
+    opacity: 0.66;
+    filter: blur(8px);
+  }
+}
+
+@keyframes venueStageBreathe {
+  0%, 100% {
+    box-shadow:
+      inset 0 0 40px rgba(120,90,220,0.25),
+      0 22px 46px rgba(0,0,0,0.5),
+      0 46px 80px rgba(0,0,0,0.44);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 52px rgba(255,130,189,0.22),
+      0 22px 50px rgba(0,0,0,0.5),
+      0 46px 88px rgba(169,139,255,0.22);
+  }
+}
+
+@keyframes venueTrussGlow {
+  0%, 100% {
+    box-shadow: 0 0 18px rgba(169,139,255,0.4);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255,210,232,0.42);
+  }
+}
+
+@keyframes venueSignGlow {
+  0%, 100% {
+    text-shadow: 0 0 18px rgba(255,130,189,0.5);
+  }
+  50% {
+    text-shadow: 0 0 24px rgba(255,226,160,0.54), 0 0 34px rgba(169,139,255,0.22);
+  }
+}
+
+@keyframes npcBreath {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes venueParticleDrift {
+  0%, 100% {
+    opacity: 0.32;
+    background-position: 38px 24px, 120px 70px;
+  }
+  50% {
+    opacity: 0.48;
+    background-position: 46px 18px, 112px 82px;
+  }
+}
+
+@keyframes venueLampGlow {
+  0%, 100% { opacity: 0.24; }
+  50% { opacity: 0.38; }
+}
+
+@keyframes venueAislePulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.68; }
+}
+
+@keyframes venueSvgParticleFade {
+  0%, 100% { opacity: 0.22; }
+  50% { opacity: 0.34; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .venue-booth,
   .venue-booth:hover,
   .venue-booth:focus-visible,
+  .venue-stage-light,
+  .venue-stage-screen,
+  .venue-stage-truss,
+  .venue-stage-sub,
+  .venue-scene::after,
+  .venue-svg-lamp,
+  .venue-svg-sweep,
+  .venue-svg-aisle,
+  .venue-svg-particle,
   .npc-avatar,
   .venue-npc:hover .npc-avatar,
   .venue-npc:focus-visible .npc-avatar {
+    animation: none !important;
     transition: none !important;
   }
 }
