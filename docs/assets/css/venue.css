@@ -46,7 +46,9 @@
 /* ADV会話UI領域：会場シーンの下に独立して配置 */
 .venue-dialogue-slot {
   position: relative;
+  height: 150px;
   min-height: 150px;
+  flex: 0 0 150px;
   padding: 18px 20px 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(180deg, rgba(8,8,22,0.5), rgba(6,6,16,0.7));
@@ -66,13 +68,9 @@
   display: none;
 }
 
-.venue-map.is-info-open .venue-dialogue-slot {
-  min-height: 260px;
-}
-
 .venue-map.is-info-open .venue-dialogue-placeholder,
 .venue-map.is-dialogue-open .venue-dialogue-placeholder {
-  display: none;
+  visibility: hidden;
 }
 
 /* 旧CSS床。会場背景はinline SVGへ寄せる */
@@ -462,7 +460,7 @@
   right: auto;
   bottom: auto;
   z-index: 20;
-  width: min(360px, calc(100% - 48px));
+  width: var(--panel-width, min(360px, calc(100% - 48px)));
   transform: none;
   border: 1px solid var(--line-strong);
   border-radius: 20px;
@@ -556,18 +554,10 @@
   .npc-avatar { width: 22px; height: 32px; }
   .npc-label { font-size: 9px; padding: 2px 6px; }
 
-  /* 情報パネルは会場シーン内の下部中央寄せ（会話スロットとは別） */
-  .venue-info-panel {
-    left: 12px;
-    right: 12px;
-    bottom: 20px;
-    top: auto;
-    width: auto;
-    transform: none;
-  }
-
-  .venue-map.is-info-open .venue-dialogue-slot {
-    min-height: 300px;
+  .venue-dialogue-slot {
+    height: 150px;
+    min-height: 150px;
+    flex: 0 0 150px;
   }
 }
 
@@ -601,14 +591,10 @@
   .npc-avatar { width: 20px; height: 30px; }
   .npc-label { font-size: 8.5px; }
 
-  .venue-info-panel {
-    left: 12px;
-    right: 12px;
-    bottom: 16px;
-  }
-
-  .venue-map.is-info-open .venue-dialogue-slot {
-    min-height: 320px;
+  .venue-dialogue-slot {
+    height: 150px;
+    min-height: 150px;
+    flex: 0 0 150px;
   }
 }
 

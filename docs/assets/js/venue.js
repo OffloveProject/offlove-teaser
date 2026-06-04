@@ -31,39 +31,55 @@
     if (!venueMap || !venueScene || !boothPanel || !sourceButton) return;
 
     const isMobile = window.matchMedia("(max-width: 900px)").matches;
-    if (isMobile) {
-      boothPanel.style.removeProperty("--panel-left");
-      boothPanel.style.removeProperty("--panel-top");
-      boothPanel.dataset.side = "bottom";
-      return;
-    }
-
     const mapRect = venueMap.getBoundingClientRect();
     const sceneRect = venueScene.getBoundingClientRect();
     const buttonRect = sourceButton.getBoundingClientRect();
-    const panelWidth = Math.min(360, Math.max(280, mapRect.width - 48));
-    const gap = 18;
-    const buttonCenterX = buttonRect.left + buttonRect.width / 2;
-    const sceneCenterX = sceneRect.left + sceneRect.width / 2;
-    const showRight = buttonCenterX < sceneCenterX;
-    let left;
-
-    if (showRight) {
-      left = buttonRect.right - mapRect.left + gap;
-      boothPanel.dataset.side = "right";
-    } else {
-      left = buttonRect.left - mapRect.left - panelWidth - gap;
-      boothPanel.dataset.side = "left";
-    }
-
-    left = Math.max(24, Math.min(left, mapRect.width - panelWidth - 24));
-
+    const gap = isMobile ? 10 : 18;
+    const panelWidth = isMobile
+      ? Math.min(320, mapRect.width - 24)
+      : Math.min(360, Math.max(280, mapRect.width - 48));
     const panelHeight = boothPanel.offsetHeight || 220;
-    let top = buttonRect.top - mapRect.top - 20;
-    top = Math.max(24, Math.min(top, sceneRect.bottom - mapRect.top - panelHeight - 24));
+    let left;
+    let top;
+
+    if (isMobile) {
+      left = buttonRect.left + buttonRect.width / 2 - mapRect.left - panelWidth / 2;
+
+      const belowTop = buttonRect.bottom - mapRect.top + gap;
+      const aboveTop = buttonRect.top - mapRect.top - panelHeight - gap;
+      const sceneBottom = sceneRect.bottom - mapRect.top;
+
+      if (belowTop + panelHeight <= sceneBottom - 12) {
+        top = belowTop;
+        boothPanel.dataset.side = "below";
+      } else {
+        top = Math.max(12, aboveTop);
+        boothPanel.dataset.side = "above";
+      }
+
+      left = Math.max(12, Math.min(left, mapRect.width - panelWidth - 12));
+      top = Math.max(12, Math.min(top, sceneBottom - panelHeight - 12));
+    } else {
+      const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+      const sceneCenterX = sceneRect.left + sceneRect.width / 2;
+      const showRight = buttonCenterX < sceneCenterX;
+
+      if (showRight) {
+        left = buttonRect.right - mapRect.left + gap;
+        boothPanel.dataset.side = "right";
+      } else {
+        left = buttonRect.left - mapRect.left - panelWidth - gap;
+        boothPanel.dataset.side = "left";
+      }
+
+      left = Math.max(24, Math.min(left, mapRect.width - panelWidth - 24));
+      top = buttonRect.top - mapRect.top - 20;
+      top = Math.max(24, Math.min(top, sceneRect.bottom - mapRect.top - panelHeight - 24));
+    }
 
     boothPanel.style.setProperty("--panel-left", left + "px");
     boothPanel.style.setProperty("--panel-top", top + "px");
+    boothPanel.style.setProperty("--panel-width", panelWidth + "px");
   };
 
   const closeBooth = () => {
